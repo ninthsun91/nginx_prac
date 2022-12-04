@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SOCKET</title>
+    </head>
+    <body>
+        <h1>NGINX TEST...WEB22222222</h1>
+        
+        <button class="button1">button1</button>
+        <div class="cnt"></div>
+
+
+
+        <script>
+            
+
+            const BUTTON1 = document.querySelector('.button1');
+            const CNT = document.querySelector('.cnt');
+            BUTTON1.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                console.log('click');
+                fetch('http://localhost:5000/click').then((result) => {
+                    result.json().then(({ clickCnt }) => {
+                        console.log('fetched', clickCnt);
+
+                        CNT.innerHTML = `<p>${clickCnt}</p>`
+                    });
+                });
+            });
+
+
+        </script>
+    </body>
+</html>
